@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Quest: 당신의 내면 캐릭터는 누구인가?</title>
+    <meta name="description" content="MBTI 성격 유형을 기반으로 한 세계관 캐릭터 테스트. 당신의 내면에 숨겨진 캐릭터를 발견해보세요! 무료 테스트, 정확한 분석, 재미있는 결과!">
+    <meta property="og:title" content="Character Quest: 당신의 내면 캐릭터는 누구인가?">
+    <meta property="og:description" content="MBTI 성격 유형을 기반으로 한 세계관 캐릭터 테스트. 무료 테스트, 정확한 분석, 재미있는 결과!">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://your-domain.com/og-image.jpg">
+    <meta name="keywords" content="MBTI, 성격테스트, 캐릭터테스트, 궁합테스트, 무료테스트, 성격분석, 커플테스트, 친구테스트">
+    <meta name="author" content="Character Quest">
+    <meta name="robots" content="index, follow">
+    <meta name="google-adsense-account" content="ca-pub-9967603096719489">
+    <link rel="canonical" href="https://your-domain.com">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9967603096719489" crossorigin="anonymous"></script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- 헤더 섹션 -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-magic"></i>
+                <h1>Character Quest</h1>
+            </div>
+            <p class="subtitle">당신의 내면 캐릭터는 누구인가?</p>
+            
+            <!-- 언어 선택 버튼 -->
+            <div class="language-selector">
+                <button class="language-btn active" data-lang="ko" onclick="changeLanguage('ko')">한국어</button>
+                <button class="language-btn" data-lang="en" onclick="changeLanguage('en')">English</button>
+                <button class="language-btn" data-lang="zh" onclick="changeLanguage('zh')">中文</button>
+                <button class="language-btn" data-lang="ja" onclick="changeLanguage('ja')">日本語</button>
+            </div>
+        </header>
+
+        <!-- 메인 콘텐츠 -->
+        <main class="main-content">
+            <!-- 광고 영역 - 상단 -->
+            <div class="ad-container ad-top">
+                <!-- AdSense 광고 코드 -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-9967603096719489"
+                     data-ad-slot="YOUR_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            <!-- 시작 화면 -->
+            <div id="start-screen" class="screen active">
+                <div class="welcome-card">
+                    <h2>Character Quest: 내면 캐릭터 테스트</h2>
+                    <p>당신의 MBTI 성격 유형을 기반으로 한 세계관 캐릭터를 발견해보세요!</p>
+                    
+                    <div class="test-options">
+                        <div class="option-card" onclick="startSoloTest()">
+                            <i class="fas fa-user"></i>
+                            <h3>내면 캐릭터 발견</h3>
+                            <p>당신의 내면에 숨겨진 세계관 캐릭터를 찾아보세요</p>
+                        </div>
+                        
+                        <div class="option-card" onclick="startDuoTest()">
+                            <i class="fas fa-users"></i>
+                            <h3>캐릭터 궁합 테스트</h3>
+                            <p>함께 테스트하고 캐릭터 간 궁합을 확인해보세요</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 개인 테스트 화면 -->
+            <div id="solo-test-screen" class="screen">
+                <div class="test-header">
+                    <h2>내면 캐릭터 발견 테스트</h2>
+                    <div class="progress-bar">
+                        <div class="progress" id="solo-progress"></div>
+                    </div>
+                    <span class="question-counter" id="solo-counter">1 / 12</span>
+                </div>
+                
+                <div class="question-container">
+                    <h3 id="solo-question">질문이 여기에 표시됩니다</h3>
+                    <div class="options">
+                        <button class="option-btn" onclick="selectSoloOption(0)">옵션 1</button>
+                        <button class="option-btn" onclick="selectSoloOption(1)">옵션 2</button>
+                        <button class="option-btn" onclick="selectSoloOption(2)">옵션 3</button>
+                        <button class="option-btn" onclick="selectSoloOption(3)">옵션 4</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 이름 입력 화면 -->
+            <div id="name-input-screen" class="screen">
+                <div class="name-input-container">
+                    <h2>플레이어 이름 입력</h2>
+                    <p>캐릭터 궁합 테스트를 위해 플레이어 이름을 입력해주세요</p>
+                    
+                    <div class="name-inputs">
+                        <div class="name-input-group">
+                            <label for="player1-name">플레이어 1 이름</label>
+                            <input type="text" id="player1-name" placeholder="이름을 입력하세요" maxlength="10">
+                        </div>
+                        
+                        <div class="name-input-group">
+                            <label for="player2-name">플레이어 2 이름</label>
+                            <input type="text" id="player2-name" placeholder="이름을 입력하세요" maxlength="10">
+                        </div>
+                    </div>
+                    
+                    <button class="btn primary" onclick="startDuoTestWithNames()">테스트 시작</button>
+                    <button class="btn secondary" onclick="showScreen('start-screen')">돌아가기</button>
+                </div>
+            </div>
+
+            <!-- 커플 테스트 화면 -->
+            <div id="duo-test-screen" class="screen">
+                <div class="test-header">
+                    <h2>캐릭터 궁합 테스트</h2>
+                    <div class="progress-bar">
+                        <div class="progress" id="duo-progress"></div>
+                    </div>
+                    <span class="question-counter" id="duo-counter">1 / 12</span>
+                </div>
+                
+                <div class="players-info">
+                    <div class="player" id="player1-info">
+                        <i class="fas fa-user"></i>
+                        <span id="player1-display-name">플레이어 1</span>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="player" id="player2-info">
+                        <i class="fas fa-user"></i>
+                        <span id="player2-display-name">플레이어 2</span>
+                    </div>
+                </div>
+                
+                <div class="current-player-indicator">
+                    <div class="indicator-text" id="current-player-text">플레이어 1의 차례입니다</div>
+                </div>
+                
+                <div class="question-container">
+                    <h3 id="duo-question">질문이 여기에 표시됩니다</h3>
+                    <div class="options">
+                        <button class="option-btn" onclick="selectDuoOption(0)">옵션 1</button>
+                        <button class="option-btn" onclick="selectDuoOption(1)">옵션 2</button>
+                        <button class="option-btn" onclick="selectDuoOption(2)">옵션 3</button>
+                        <button class="option-btn" onclick="selectDuoOption(3)">옵션 4</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 결과 화면 -->
+            <div id="result-screen" class="screen">
+                <!-- 광고 영역 - 결과 화면 상단 -->
+                <div class="ad-container ad-result-top">
+                    <!-- AdSense 광고 코드 -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-9967603096719489"
+                         data-ad-slot="YOUR_RESULT_AD_SLOT_ID"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                
+                <div class="result-container">
+                    <h2>당신의 내면 캐릭터</h2>
+                    
+                    <!-- 개인 결과 -->
+                    <div id="solo-result" class="result-section">
+                        <div class="character-result">
+                            <div class="character-image" id="solo-character-image">
+                                <!-- 캐릭터 이미지가 여기에 표시됩니다 -->
+                            </div>
+                            <div class="character-info">
+                                <h3 class="character-name" id="solo-character-name">캐릭터명</h3>
+                                <div class="mbti-type" id="solo-mbti">INTJ</div>
+                                <p class="character-description" id="solo-description">캐릭터 설명이 여기에 표시됩니다</p>
+                                <div class="character-abilities">
+                                    <h4 class="result-label">능력</h4>
+                                    <p id="solo-abilities">능력이 여기에 표시됩니다</p>
+                                </div>
+                                <div class="recommended-jobs">
+                                    <h4 class="result-label">추천 직업</h4>
+                                    <p id="solo-jobs">추천 직업이 여기에 표시됩니다</p>
+                                </div>
+                                
+                                <!-- TETO/EGGN 결과 -->
+                                <div class="teto-eggn-result">
+                                    <h4>💕 연애 성향 분석 (TETO/EGGN)</h4>
+                                    <div class="teto-eggn-info">
+                                        <div class="teto-eggn-type">
+                                            <h5>연애 유형</h5>
+                                            <p id="solo-teto-type">테토형/에겐형</p>
+                                        </div>
+                                        <div class="teto-eggn-strength">
+                                            <h5>💪 강점</h5>
+                                            <p id="solo-teto-strength">강점이 여기에 표시됩니다</p>
+                                        </div>
+                                        <div class="teto-eggn-weakness">
+                                            <h5>⚠️ 개선점</h5>
+                                            <p id="solo-teto-weakness">개선점이 여기에 표시됩니다</p>
+                                        </div>
+                                        <div class="teto-eggn-relationship">
+                                            <h5>💑 연애 스타일</h5>
+                                            <p id="solo-teto-relationship">연애 스타일이 여기에 표시됩니다</p>
+                                        </div>
+                                        <div class="teto-eggn-ideal">
+                                            <h5>💘 이상형</h5>
+                                            <p id="solo-teto-ideal">이상형이 여기에 표시됩니다</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 커플 결과 -->
+                    <div id="duo-result" class="result-section" style="display: none;">
+                        <div class="players-results">
+                            <div class="player-result">
+                                <h4 id="result-player1-name">플레이어 1</h4>
+                                <div class="character-image-small" id="player1-character-image"></div>
+                                <div class="mbti-type" id="player1-mbti">INTJ</div>
+                                <div class="character-name-small" id="player1-character-name">캐릭터1</div>
+                            </div>
+                            <div class="compatibility">
+                                <div class="compatibility-score" id="compatibility-score">85%</div>
+                                <p>궁합</p>
+                            </div>
+                            <div class="player-result">
+                                <h4 id="result-player2-name">플레이어 2</h4>
+                                <div class="character-image-small" id="player2-character-image"></div>
+                                <div class="mbti-type" id="player2-mbti">ENFP</div>
+                                <div class="character-name-small" id="player2-character-name">캐릭터2</div>
+                            </div>
+                        </div>
+                        
+                        <div class="relationship-analysis">
+                            <h4 id="relationship-title">캐릭터 궁합 분석</h4>
+                            <p id="relationship-description">궁합 분석이 여기에 표시됩니다</p>
+                            
+                            <div class="analysis-details">
+                                <div class="analysis-section">
+                                    <h5>💪 강점</h5>
+                                    <p id="relationship-strengths">강점이 여기에 표시됩니다</p>
+                                </div>
+                                
+                                <div class="analysis-section">
+                                    <h5>⚠️ 도전 과제</h5>
+                                    <p id="relationship-challenges">도전 과제가 여기에 표시됩니다</p>
+                                </div>
+                                
+                                <div class="analysis-section">
+                                    <h5>💡 조언</h5>
+                                    <p id="relationship-advice">조언이 여기에 표시됩니다</p>
+                                </div>
+                                
+                                <div class="analysis-section">
+                                    <h5>🤝 관계 유형</h5>
+                                    <p id="relationship-type">관계 유형이 여기에 표시됩니다</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 추천 파트너 캐릭터 -->
+                        <div class="recommended-partner">
+                            <h4>추천 파트너 캐릭터</h4>
+                            <div class="partner-character" id="partner-character">
+                                <div class="character-image-small" id="partner-character-image"></div>
+                                <div class="character-name-small" id="partner-character-name">추천 파트너</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn primary" onclick="restartTest()">다시 테스트하기</button>
+                        <button class="btn secondary" onclick="shareResult()">결과 공유하기</button>
+                    </div>
+                    
+                    <!-- 광고 영역 - 결과 하단 -->
+                    <div class="ad-container ad-result">
+                        <!-- AdSense 광고 코드 -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-9967603096719489"
+                             data-ad-slot="YOUR_RESULT_BOTTOM_AD_SLOT_ID"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                    
+                    <!-- 관련 테스트 추천 -->
+                    <div class="related-tests">
+                        <h4>다른 테스트도 해보세요!</h4>
+                        <div class="test-suggestions">
+                            <div class="suggestion-card" onclick="startRomanticTest()">
+                                <i class="fas fa-heart"></i>
+                                <h5>로맨틱 궁합 테스트</h5>
+                                <p>더 깊은 사랑의 궁합을 알아보세요</p>
+                            </div>
+                            <div class="suggestion-card" onclick="startCareerTest()">
+                                <i class="fas fa-briefcase"></i>
+                                <h5>직업 적성 테스트</h5>
+                                <p>당신에게 맞는 직업을 찾아보세요</p>
+                            </div>
+                            <div class="suggestion-card" onclick="startPersonalityTest()">
+                                <i class="fas fa-star"></i>
+                                <h5>성격 심화 분석</h5>
+                                <p>더 자세한 성격 분석을 받아보세요</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 로맨틱 궁합 테스트 화면 -->
+            <div id="romantic-test-screen" class="screen">
+                <div class="test-header">
+                    <h2>로맨틱 궁합 테스트 💕</h2>
+                    <div class="progress-bar">
+                        <div class="progress" id="romantic-progress"></div>
+                    </div>
+                    <span class="question-counter" id="romantic-counter">1 / 5</span>
+                </div>
+                
+                <div class="question-container">
+                    <h3 id="romantic-question">질문이 여기에 표시됩니다</h3>
+                    <div class="options">
+                        <button class="option-btn" onclick="selectRomanticOption(0)">옵션 1</button>
+                        <button class="option-btn" onclick="selectRomanticOption(1)">옵션 2</button>
+                        <button class="option-btn" onclick="selectRomanticOption(2)">옵션 3</button>
+                        <button class="option-btn" onclick="selectRomanticOption(3)">옵션 4</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 직업 적성 테스트 화면 -->
+            <div id="career-test-screen" class="screen">
+                <div class="test-header">
+                    <h2>직업 적성 테스트 💼</h2>
+                    <div class="progress-bar">
+                        <div class="progress" id="career-progress"></div>
+                    </div>
+                    <span class="question-counter" id="career-counter">1 / 5</span>
+                </div>
+                
+                <div class="question-container">
+                    <h3 id="career-question">질문이 여기에 표시됩니다</h3>
+                    <div class="options">
+                        <button class="option-btn" onclick="selectCareerOption(0)">옵션 1</button>
+                        <button class="option-btn" onclick="selectCareerOption(1)">옵션 2</button>
+                        <button class="option-btn" onclick="selectCareerOption(2)">옵션 3</button>
+                        <button class="option-btn" onclick="selectCareerOption(3)">옵션 4</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 성격 심화 분석 테스트 화면 -->
+            <div id="personality-test-screen" class="screen">
+                <div class="test-header">
+                    <h2>성격 심화 분석 ⭐</h2>
+                    <div class="progress-bar">
+                        <div class="progress" id="personality-progress"></div>
+                    </div>
+                    <span class="question-counter" id="personality-counter">1 / 5</span>
+                </div>
+                
+                <div class="question-container">
+                    <h3 id="personality-question">질문이 여기에 표시됩니다</h3>
+                    <div class="options">
+                        <button class="option-btn" onclick="selectPersonalityOption(0)">옵션 1</button>
+                        <button class="option-btn" onclick="selectPersonalityOption(1)">옵션 2</button>
+                        <button class="option-btn" onclick="selectPersonalityOption(2)">옵션 3</button>
+                        <button class="option-btn" onclick="selectPersonalityOption(3)">옵션 4</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 로맨틱 결과 화면 -->
+            <div id="romantic-result-screen" class="screen">
+                <div class="result-container">
+                    <h2>로맨틱 궁합 테스트 결과 💕</h2>
+                    
+                    <div class="romantic-result">
+                        <h3 id="romantic-result-title">결과 제목</h3>
+                        <p id="romantic-result-description">결과 설명</p>
+                        
+                        <div class="result-details">
+                            <div class="result-section">
+                                <h4>💕 연애 특성</h4>
+                                <p id="romantic-result-characteristics">특성이 여기에 표시됩니다</p>
+                            </div>
+                            
+                            <div class="result-section">
+                                <h4>💘 이상형</h4>
+                                <p id="romantic-result-ideal">이상형이 여기에 표시됩니다</p>
+                            </div>
+                            
+                            <div class="result-section">
+                                <h4>💡 조언</h4>
+                                <p id="romantic-result-advice">조언이 여기에 표시됩니다</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn primary" onclick="restartTest()">다시 테스트하기</button>
+                        <button class="btn secondary" onclick="shareResult()">결과 공유하기</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 직업 결과 화면 -->
+            <div id="career-result-screen" class="screen">
+                <div class="result-container">
+                    <h2>직업 적성 테스트 결과 💼</h2>
+                    
+                    <div class="career-result">
+                        <h3 id="career-result-title">결과 제목</h3>
+                        <p id="career-result-description">결과 설명</p>
+                        
+                        <div class="result-details">
+                            <div class="result-section">
+                                <h4>💼 직업 특성</h4>
+                                <p id="career-result-characteristics">특성이 여기에 표시됩니다</p>
+                            </div>
+                            
+                            <div class="result-section">
+                                <h4>🎯 추천 직업</h4>
+                                <p id="career-result-jobs">추천 직업이 여기에 표시됩니다</p>
+                            </div>
+                            
+                            <div class="result-section">
+                                <h4>💡 조언</h4>
+                                <p id="career-result-advice">조언이 여기에 표시됩니다</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn primary" onclick="restartTest()">다시 테스트하기</button>
+                        <button class="btn secondary" onclick="shareResult()">결과 공유하기</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 성격 결과 화면 -->
+            <div id="personality-result-screen" class="screen">
+                <div class="result-container">
+                    <h2>성격 심화 분석 결과 ⭐</h2>
+                    
+                    <div class="personality-result">
+                        <h3 id="personality-result-title">결과 제목</h3>
+                        <p id="personality-result-description">결과 설명</p>
+                        
+                        <div class="result-details">
+                            <div class="result-section">
+                                <h4>⭐ 성격 특성</h4>
+                                <p id="personality-result-characteristics">특성이 여기에 표시됩니다</p>
+                            </div>
+                            
+                            <div class="result-section">
+                                <h4>💪 강점</h4>
+                                <p id="personality-result-strengths">강점이 여기에 표시됩니다</p>
+                            </div>
+                            
+                            <div class="result-section">
+                                <h4>⚠️ 개선점</h4>
+                                <p id="personality-result-weaknesses">개선점이 여기에 표시됩니다</p>
+                            </div>
+                            
+                            <div class="result-section">
+                                <h4>💡 조언</h4>
+                                <p id="personality-result-advice">조언이 여기에 표시됩니다</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn primary" onclick="restartTest()">다시 테스트하기</button>
+                        <button class="btn secondary" onclick="shareResult()">결과 공유하기</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 광고 영역 - 하단 -->
+            <div class="ad-container ad-bottom">
+                <!-- AdSense 광고 코드 -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-9967603096719489"
+                     data-ad-slot="YOUR_BOTTOM_AD_SLOT_ID"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </main>
+
+        <!-- 푸터 -->
+        <footer class="footer">
+            <p>&copy; 2025 MBTI + TETO 하이브리드 테스트. 모든 권리 보유.</p>
+        </footer>
+    </div>
+    
+    <!-- 모달 창 -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <i id="modal-icon" class="fas fa-info-circle"></i>
+                <h3 id="modal-title">알림</h3>
+            </div>
+            <div class="modal-body">
+                <p id="modal-message">메시지가 여기에 표시됩니다.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn primary" onclick="closeModal()">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,80 @@
+[MBTI × 세계관 캐릭터 테스트 기획안 for 바이브코딩]
+
+============================
+1. 테스트 기본 정보
+============================
+
+- 테스트 이름: Soul Codex: 당신의 내면 캐릭터는 누구인가?
+- 목적: MBTI 성격 유형 분석 + 감성 기반 세계관 캐릭터 결과 제공
+- 대상: 전 세계 10~30대 (SNS 공유 중심)
+- 문항 수: 12문항 (MBTI 4축 × 3문항)
+- 결과 수: 16개 (MBTI 유형) + 각기 대응하는 감성 캐릭터
+- 수익 구조: Google AdSense (결과 페이지), 공유 유도 반복 트래픽
+
+============================
+2. 질문 리스트 (12문항)
+============================
+
+각 질문은 MBTI 기준으로 성향 판별하며, 동시에 TETO/EGGN 캐릭터 분기 기반이 됨.
+
+예시:
+Q1. 처음 만난 사람과 식사한다면?
+A. 자연스럽게 먼저 말 건다 (E)
+B. 듣고 관찰하면서 반응함 (I)
+
+(생략된 질문 포함 12개 문항)
+
+============================
+3. MBTI 유형 × 세계관 캐릭터 결과
+============================
+
+(16개 캐릭터 요약. 각 항목은 캐릭터명, 역할, 설명, 능력, 추천 직업, 궁합 포함)
+
+예시:
+
+INFJ – “별의 도서관 예언자 루네아”
+- 세상의 흐름을 읽는 고대 예언자
+- 능력: 예지, 정신 연결
+- 추천 직업: 작가, 상담가
+- 궁합: ENFP
+
+(…나머지 15개 캐릭터 생략 없이 구성)
+
+============================
+4. AI 이미지 생성용 프롬프트 (Midjourney 기준)
+============================
+
+모든 프롬프트 공통 설정:
+--v 6 --ar 2:3 --style raw
+
+예시:
+
+INFJ – 루네아
+a fantasy female librarian oracle standing under a starry sky, glowing magic book floating in front of her, long silver hair, serene expression, deep blue cloak with star patterns, soft light effects, art by yoshitaka amano and loish, detailed background, dreamy style --v 6 --ar 2:3 --style raw
+
+ENFP – 마라
+a whimsical female wind mage in a flowing green dress, messy orange hair, joyful smile, holding a crystal flute, gusts of wind and leaves swirling around, anime fantasy art, concept style by loish --v 6 --ar 2:3 --style raw
+
+(…나머지 14개 캐릭터 프롬프트 포함)
+
+============================
+5. 결과 페이지 구성 요소
+============================
+
+- MBTI 코드 결과 요약
+- 캐릭터 일러스트 이미지
+- 세계관 기반 설명
+- 추천 직업 / 궁합 캐릭터 링크
+- 공유 버튼 (Twitter, Instagram, 카카오톡)
+- 광고 영역 배치 (상단, 중단, 하단)
+- 다국어 대응 고려 (i18n 번역 가능)
+
+============================
+6. 개발 참고 (바이브 코딩용)
+============================
+
+- 구조: SPA (React 또는 Vue), Vercel/Netlify 배포
+- 상태관리: Zustand or Pinia
+- 이미지 명명 규칙: [mbti_code]-[character].png
+- 공유용 메타태그 설정 필수
+- 다국어 적용: i18n.js + 언어 쿼리 파라미터
